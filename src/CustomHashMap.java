@@ -136,4 +136,26 @@ public class CustomHashMap<K, V> {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+
+        boolean first = true;
+        for (int i = 0; i < table.length; i++) {
+            Node<K, V> node = table[i];
+            while (node != null) {
+                if (!first) {
+                    sb.append(", ");
+                }
+                sb.append(node.key).append("=").append(node.value);
+                first = false;
+                node = node.next;
+            }
+        }
+
+        sb.append("}");
+        return sb.toString();
+    }
 }
